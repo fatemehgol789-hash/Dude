@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f8e9e8">
+<title>Parvaz Daily | دنیای کوچک من</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+:root{--ink:#493b43;--muted:#8c7b82;--paper:#fffaf5;--line:#eadfd8;--pink:#f8e5e8;--cream:#f4ead8;--green:#e6efdf;--purple:#eee5f8;--orange:#fae8d7;--blue:#e2edf8;--shadow:0 14px 35px #6f53600f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fbf5ef;color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.8}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px clamp(15px,4vw,48px);background:#fffaf3d9;border-bottom:1px solid #eee1d5;position:relative;z-index:3}
+.logo{display:flex;align-items:center;gap:10px}.logo-mark{width:43px;height:43px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#f5dfe5,#e8d9f2);font-size:23px;box-shadow:inset 0 1px 0 white}.logo strong{display:block;font:600 20px Georgia,serif;letter-spacing:.3px}.logo small{display:block;color:#a28e94;font-size:11px;margin-top:-4px}.top-actions{display:flex;gap:8px}.round-btn{border:1px solid #eadbd1;background:#fff9f0;border-radius:50%;width:42px;height:42px;color:#78646a}
+.hero{position:relative;overflow:hidden;text-align:center;padding:28px 18px 8px;background:radial-gradient(ellipse at 50% 12%,#fffdf4 0,#f8eee4 48%,#f4e8df 100%);min-height:570px}
+.hero:before,.hero:after{content:"✦";position:absolute;color:#c6a87a;font-size:26px;opacity:.7}.hero:before{top:95px;left:8%}.hero:after{top:145px;right:9%;font-size:18px}
+.eyebrow{font-size:11px;letter-spacing:3px;color:#a68b70;font-weight:600}.hero h1{font-size:clamp(27px,5vw,43px);line-height:1.5;margin:5px 0 0;font-weight:800;color:#514044}.hero p{color:#8d7a7b;font-size:14px;max-width:580px;margin:6px auto 0}
+.stage{height:310px;max-width:720px;margin:5px auto 0;position:relative;perspective:1000px;isolation:isolate}
+.stage:before{content:"";position:absolute;left:7%;right:7%;top:45px;bottom:8px;border:1px solid #e7d8c5;border-radius:50%;background:radial-gradient(ellipse,#fffaf0 0%,#f8eddb99 57%,transparent 72%);z-index:-1}
+.stage:after{content:"";position:absolute;inset:15% 12%;background:radial-gradient(ellipse,#fff8e9aa,transparent 67%);z-index:-1}
+.book3d{position:absolute;width:124px;height:174px;transform-style:preserve-3d;filter:drop-shadow(10px 17px 10px #5a41352b);animation:bookFloat 5.8s ease-in-out infinite;top:63px;left:calc(50% - 62px)}
+.book3d .pages{position:absolute;inset:5px -8px 1px 8px;background:repeating-linear-gradient(0deg,#e9d8b5 0 2px,#fff0cf 2px 4px);transform:translateZ(-9px) rotateY(4deg);border-radius:3px 7px 7px 3px;box-shadow:4px 3px 0 #bda17e}
+.book3d .cover{position:absolute;inset:0;border-radius:4px 11px 11px 4px;border:2px solid #f2d9a5;transform:translateZ(3px);box-shadow:inset 6px 0 0 #ffffff22,inset 10px 0 0 #00000012,inset -4px 0 0 #ffffff20;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.cover:before{content:"";position:absolute;inset:8px;border:1px solid #f3dba7a8;border-radius:2px 8px 8px 2px}
+.cover:after{content:"";position:absolute;width:90px;height:90px;border:1px solid #f5dfb2a0;border-radius:50%;top:28px;left:17px}
+.cover .sigil{font-family:Georgia,serif;font-size:39px;line-height:1;z-index:1;color:#f5d99a;text-shadow:0 1px #3e2b28}.cover .book-name{font:10px Georgia,serif;letter-spacing:2px;color:#f8e4ba;margin-top:16px;z-index:1}.cover .ornament{font-size:13px;color:#e7c786;z-index:1;margin-top:9px}
+.book-one{left:calc(50% - 170px);top:75px;transform:rotate(-15deg) rotateY(-12deg);animation-delay:-1s}
+.book-one .cover{background:linear-gradient(115deg,#6a4332,#84583f 48%,#4f342b)}.book-one .cover:after{border-radius:45% 45% 50% 50%;transform:rotate(20deg)}
+.book-two{left:calc(50% - 57px);top:125px;transform:rotate(9deg) rotateY(13deg);animation-delay:-3.1s}
+.book-two .cover{background:linear-gradient(120deg,#234b43,#37695c 55%,#1d4039)}.book-two .cover:after{width:65px;height:95px;left:26px;top:28px;border-radius:50% 50% 8% 8%}
+.book-three{left:calc(50% + 53px);top:45px;transform:rotate(16deg) rotateY(-12deg);animation-delay:-4.2s}
+.book-three .cover{background:linear-gradient(120deg,#985b70,#b97888 48%,#754257)}
+.book-three .cover:after{width:70px;height:70px;left:24px;top:35px}
+@keyframes bookFloat{0%,100%{translate:0 0;rotate:0deg}25%{translate:7px -14px;rotate:2deg}50%{translate:-2px -25px;rotate:-1deg}75%{translate:-8px -9px;rotate:1.5deg}}
+.glint{position:absolute;color:#d4b477;animation:twinkle 2.7s ease-in-out infinite}.g1{left:18%;top:70px}.g2{right:19%;top:190px;animation-delay:-1.4s}.g3{left:31%;bottom:25px;animation-delay:-.8s}@keyframes twinkle{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+.stage-caption{font:11px Georgia,serif;letter-spacing:4px;color:#9d815a;position:absolute;bottom:1px;left:0;right:0}
+.choose{max-width:1100px;margin:15px auto 0;padding:20px clamp(14px,4vw,38px) 45px}.choose-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}.choose-head h2{margin:3px 0 0;font-size:clamp(20px,4vw,27px)}.choose-head p{margin:0;color:#9c8987;font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.world{position:relative;min-height:190px;border:1px solid #ffffffb8;border-radius:24px;text-align:right;padding:18px 17px 16px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;color:var(--ink)}.world:hover{transform:translateY(-3px);box-shadow:0 18px 35px #6f53601c}.world:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;left:-43px;bottom:-62px;background:#ffffff3b}.world .world-icon{font-size:31px;display:block;margin-bottom:4px}.world .en{font:10px Georgia,serif;letter-spacing:1.2px;color:#897b79;display:block}.world strong{font-size:19px;display:block;margin:3px 0}.world p{font-size:12px;color:#827675;margin:0;max-width:90%}.world .go{position:absolute;left:14px;bottom:14px;width:29px;height:29px;border-radius:50%;background:#ffffff9c;display:grid;place-items:center;color:#7a656a}
+.pink{background:linear-gradient(145deg,#fbecef,#f5dfe5)}.cream{background:linear-gradient(145deg,#fbf3e3,#efe1c7)}.green{background:linear-gradient(145deg,#eff4e7,#dfe9d6)}.purple{background:linear-gradient(145deg,#f4ecfb,#e6d9f3)}.orange{background:linear-gradient(145deg,#fff0e1,#f6dfc9)}.blue{background:linear-gradient(145deg,#edf5fd,#dce9f7)}
+.section-view{display:none;max-width:920px;margin:0 auto;padding:20px 15px 60px;min-height:55vh}.section-view.active{display:block;animation:fadein .25s}@keyframes fadein{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
+.section-head{display:flex;align-items:center;gap:13px;margin-bottom:14px}.back{width:43px;height:43px;border-radius:15px;border:1px solid #ffffff;background:#ffffff9c;color:#725b65}.section-head h2{margin:0;font-size:24px}.section-head p{margin:0;color:#897d80;font-size:12px}
+.sheet{background:#fffdf8;border:1px solid #eadfd7;border-radius:22px;padding:17px;margin:12px 0;box-shadow:var(--shadow)}.sheet h3{margin:0 0 12px;font-size:16px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:9px}.fields .full{grid-column:1/-1}
+input,textarea,select{width:100%;border:1px solid #e7dcd3;border-radius:12px;background:#fffdf9;padding:11px 12px;color:#4f4146;outline:none;font-size:13px}textarea{min-height:85px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#c9a8bc;box-shadow:0 0 0 3px #d8c0d52a}
+.btn{border:0;border-radius:12px;padding:10px 15px;background:#71565f;color:#fffaf5;font-size:12px}.btn.secondary{background:#f0e5e4;color:#725b65}.btn.danger{background:#f7e4e3;color:#985c5a}.entries{display:grid;gap:8px}.entry{display:flex;align-items:flex-start;gap:9px;background:#fff9f3;border:1px solid #efe4db;border-radius:14px;padding:11px;font-size:13px}.entry input[type=checkbox]{width:18px;min-width:18px;margin-top:5px}.entry-main{flex:1;min-width:0;overflow-wrap:anywhere}.entry small{display:block;color:#a18d8b;font-size:11px}.entry-actions{display:flex;gap:5px}.entry-actions button{border:0;border-radius:9px;padding:4px 8px;font-size:10px}.empty{padding:18px;text-align:center;color:#a99999;font-size:12px}
+.moods{display:flex;gap:8px;flex-wrap:wrap}.mood{border:1px solid #eed9df;background:#fff8f9;border-radius:14px;padding:8px 10px;font-size:21px}.mood.selected{background:#f4dce4;border-color:#d9aabb}.library-backdrop{background:radial-gradient(ellipse at 50% 0,#f9ebff,#e8d9ee 55%,#d7c4dc);border:1px solid #d9c6df;border-radius:23px;padding:16px;position:relative;overflow:hidden}.library-backdrop:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 30px,#ffffff12 31px 32px);pointer-events:none}.book-list{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.book-entry{background:#fff9f2d9;border:1px solid #e4d5e6;border-radius:15px;padding:11px}.book-entry strong{display:block}.book-entry small{color:#9a849e}.book-entry p{font-size:12px;margin:4px 0}.plant-item{background:#f2f6ea;border-color:#dce8d2}.statline{display:flex;justify-content:space-between;color:#8b7a80;font-size:12px;margin-top:7px}
+.footer{text-align:center;color:#a89691;font-size:11px;padding:20px}
+@media(min-width:720px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.world{min-height:205px;padding:22px}.stage{height:330px}.hero{padding-top:40px}.book3d{scale:1.08}}
+@media(max-width:440px){.topbar{padding:12px 14px}.logo strong{font-size:18px}.hero{min-height:520px;padding-top:25px}.stage{height:280px;transform:scale(.91);transform-origin:top center;margin-bottom:-18px}.book3d{scale:.94}.cards{gap:9px}.world{min-height:180px;padding:14px 12px}.world strong{font-size:17px}.world p{font-size:11px}.choose-head{display:block}.choose-head p{margin-top:3px}.fields{grid-template-columns:1fr}.fields .full{grid-column:auto}.section-head h2{font-size:21px}.book-list{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="logo"><div class="logo-mark">✧</div><div><strong>Parvaz Daily</strong><small>your little enchanted life</small></div></div>
+  <div class="top-actions"><button class="round-btn" id="musicBtn" title="صدای پس‌زمینه">♫</button><button class="round-btn" id="backupBtn" title="نسخه پشتیبان">↧</button></div>
+</header>
+<main id="homeView">
+  <section class="hero">
+    <div class="eyebrow">A LITTLE SPACE JUST FOR YOU</div>
+    <h1>به دنیای کوچک جادویی‌ات<br>خوش اومدی</h1>
+    <p>اینجا می‌تونی درس بخونی، از خودت مراقبت کنی، خرج‌هات رو مدیریت کنی و بین کتاب‌ها گم بشی.</p>
+    <div class="stage" aria-label="سه کتاب سه‌بعدی با حرکت شناور">
+      <span class="glint g1">✧</span><span class="glint g2">✦</span><span class="glint g3">✧</span>
+      <div class="book3d book-one"><div class="pages"></div><div class="cover"><span class="sigil">✦</span><span class="book-name">ARCANA</span><span class="ornament">✧ ✧ ✧</span></div></div>
+      <div class="book3d book-two"><div class="pages"></div><div class="cover"><span class="sigil">❦</span><span class="book-name">BOTANICA</span><span class="ornament">✧ ❧ ✧</span></div></div>
+      <div class="book3d book-three"><div class="pages"></div><div class="cover"><span class="sigil">☾</span><span class="book-name">NOCTURNE</span><span class="ornament">✧ ✧ ✧</span></div></div>
+      <div class="stage-caption">OPEN YOUR STORY</div>
+    </div>
+  </section>
+  <section class="choose">
+    <div class="choose-head"><div><div class="eyebrow">CHOOSE YOUR WORLD</div><h2>امروز وارد کدوم بخش می‌شی؟</h2></div><p id="todayDate"></p></div>
+    <div class="cards">
+      <button class="world pink" data-open="daily"><span class="world-icon">☁️ 🌸</span><span class="en">MY DAILY DIARY</span><strong>روزانه و حال من</strong><p>کارها، حال امروز، اتفاقات و خاطرات روز</p><span class="go">←</span></button>
+      <button class="world cream" data-open="study"><span class="world-icon">⚖️ ✒️</span><span class="en">THE SCHOLAR'S STUDY</span><strong>اتاق مطالعه</strong><p>درس‌ها، برنامه مطالعه و نکات مهم</p><span class="go">←</span></button>
+      <button class="world green" data-open="plants"><span class="world-icon">❧ 🪴</span><span class="en">THE GARDEN ROOM</span><strong>گل‌ها و گیاهان</strong><p>ثبت گیاه‌ها، تاریخ آبیاری و مراقبت</p><span class="go">←</span></button>
+      <button class="world purple" data-open="books"><span class="world-icon">📖 ✧</span><span class="en">THE STORY LIBRARY</span><strong>کتابخانه فانتزی</strong><p>رمان‌ها، کتاب‌های خوانده‌شده و نقدها</p><span class="go">←</span></button>
+      <button class="world orange" data-open="wellness"><span class="world-icon">☀️ 🍊</span><span class="en">THE LITTLE ORCHARD</span><strong>تغذیه و ورزش</strong><p>وعده‌ها، آب نوشیدن و فعالیت روزانه</p><span class="go">←</span></button>
+      <button class="world blue" data-open="expenses"><span class="world-icon">☁️ ₊˚</span><span class="en">MY LITTLE TREASURY</span><strong>هزینه‌های من</strong><p>ثبت مخارج و دیدن جمع هزینه‌ها</p><span class="go">←</span></button>
+    </div>
+    <div class="sheet"><h3>✧ خلاصه‌ی امروز</h3><div id="summary" class="statline"><span>هنوز چیزی برای امروز ثبت نشده.</span></div></div>
+  </section>
+</main>
+<section class="section-view pink" id="view-daily">
+  <div class="section-head"><button class="back" data-home>→</button><div><h2>روزانه و حال من 🌸</h2><p>برای خودت یک گوشه‌ی آرام بساز.</p></div></div>
+  <div class="sheet"><h3>حالم امروز چطوره؟</h3><div class="moods" id="moods"><button class="mood" data-mood="عالی">😄</button><button class="mood" data-mood="خوب">🙂</button><button class="mood" data-mood="معمولی">😐</button><button class="mood" data-mood="خسته">😴</button><button class="mood" data-mood="دلگیر">🌧️</button></div><form id="moodForm"><textarea id="moodNote" placeholder="چرا این حس رو داری؟ هرچی دوست داری بنویس..."></textarea><button class="btn">ذخیره حال امروز</button></form></div>
+  <div class="sheet"><h3>کارهای امروز</h3><form id="taskForm"><div class="fields"><input id="taskText" required placeholder="چه کاری باید انجام بدم؟"><input id="taskTime" type="time" aria-label="زمان"><button class="btn full">＋ افزودن کار</button></div></form><div class="statline"><span id="taskProgress">۰ از ۰ کار انجام شده</span><span id="taskPercent">۰٪</span></div><div style="height:7px;background:#f4d9e0;border-radius:8px;margin:8px 0 12px"><div id="taskBar" style="height:100%;width:0;background:#cc91a5;border-radius:8px"></div></div><div id="tasks" class="entries"></div></div>
+  <div class="sheet"><h3>اتفاقات و خاطرات روز</h3><form id="eventForm"><input id="eventTitle" required placeholder="عنوان خاطره یا اتفاق"><textarea id="eventBody" placeholder="امروز چه اتفاقی افتاد؟"></textarea><button class="btn">ثبت در دفترم</button></form><div id="events" class="entries"></div></div>
+</section>
+<section class="section-view cream" id="view-study">
+  <div class="section-head"><button class="back" data-home>→</button><div><h2>اتاق مطالعه ⚖️</h2><p>قدم‌به‌قدم به هدف‌هات نزدیک شو.</p></div></div>
+  <div class="sheet"><h3>برنامه‌ی درس‌ها</h3><form id="studyForm"><div class="fields"><input id="studyTitle" required placeholder="نام درس یا موضوع"><input id="studyMinutes" type="number" min="1" placeholder="مدت مطالعه (دقیقه)"><textarea class="full" id="studyNote" placeholder="هدف یا توضیح کوتاه"></textarea><button class="btn full">＋ افزودن به برنامه</button></div></form><div id="studies" class="entries"></div></div>
+  <div class="sheet"><h3>نکات درسی و حقوقی</h3><form id="tipForm"><input id="tipTitle" required placeholder="عنوان نکته"><select id="tipCategory"><option>حقوق مدنی</option><option>حقوق جزا</option><option>آیین دادرسی</option><option>حقوق تجارت</option><option>سایر درس‌ها</option></select><textarea id="tipBody" required placeholder="متن نکته، ماده قانونی یا یادآوری"></textarea><button class="btn">ذخیره نکته</button></form><div id="tips" class="entries"></div></div>
+</section>
+<section class="section-view green" id="view-plants">
+  <div class="section-head"><button class="back" data-home>→</button><div><h2>اتاق سبز من 🪴</h2><p>هر برگ، یک یادآوری برای آرام‌تر زندگی کردن.</p></div></div>
+  <div class="sheet"><h3>افزودن گیاه</h3><form id="plantForm"><div class="fields"><input id="plantName" required placeholder="نام گیاه"><input id="plantWater" type="date" required aria-label="تاریخ آبیاری بعدی"><input id="plantLast" type="date" aria-label="آخرین آبیاری"><input id="plantLight" placeholder="نور مورد نیاز"><textarea id="plantNote" class="full" placeholder="یادداشت مراقبت"></textarea><button class="btn full">＋ افزودن به باغچه</button></div></form><div id="plants" class="entries"></div></div>
+</section>
+<section class="section-view purple" id="view-books">
+  <div class="section-head"><button class="back" data-home>→</button><div><h2>کتابخانه‌ی قصه‌ها 📚</h2><p>هر کتاب، دری به یک جهان تازه است.</p></div></div>
+  <div class="library-backdrop"><div class="book-list" id="books"></div></div>
+  <div class="sheet"><h3>افزودن کتاب به کتابخانه</h3><form id="bookForm"><div class="fields"><input id="bookTitle" required placeholder="نام کتاب"><input id="bookAuthor" placeholder="نویسنده"><select id="bookStatus"><option>می‌خواهم بخوانم</option><option>در حال خواندن</option><option>خوانده‌ام</option></select><button class="btn">＋ افزودن کتاب</button></div></form></div>
+  <div class="sheet"><h3>نقد و یادداشت کتاب</h3><form id="reviewForm"><input id="reviewTitle" required placeholder="نام کتاب"><textarea id="reviewBody" required placeholder="نظرت درباره‌ی داستان، شخصیت‌ها یا پایان کتاب..."></textarea><button class="btn">ذخیره نقد</button></form><div id="reviews" class="entries"></div></div>
+</section>
+<section class="section-view orange" id="view-wellness">
+  <div class="section-head"><button class="back" data-home>→</button><div><h2>تغذیه و حرکت 🍊</h2><p>مراقبت‌های کوچک، برای حس بهتر.</p></div></div>
+  <div class="sheet"><h3>وعده‌ها و آب نوشیدن</h3><form id="foodForm"><div class="fields"><input id="foodName" required placeholder="چه چیزی خوردی یا نوشیدی؟"><select id="foodType"><option>صبحانه</option><option>ناهار</option><option>شام</option><option>میان‌وعده</option><option>آب</option></select><button class="btn full">＋ ثبت مورد</button></div></form><div id="foods" class="entries"></div></div>
+  <div class="sheet"><h3>ورزش و فعالیت</h3><form id="exerciseForm"><div class="fields"><input id="exerciseName" required placeholder="نوع فعالیت"><input id="exerciseMinutes" type="number" min="1" placeholder="مدت (دقیقه)"><button class="btn full">＋ ثبت فعالیت</button></div></form><div id="exercises" class="entries"></div></div>
+</section>
+<section class="section-view blue" id="view-expenses">
+  <div class="section-head"><button class="back" data-home>→</button><div><h2>خزانه‌ی کوچک من ☁️</h2><p>خرج‌هات رو با خیال راحت دنبال کن.</p></div></div>
+  <div class="sheet"><h3>ثبت هزینه‌ی جدید</h3><form id="expenseForm"><div class="fields"><input id="expenseTitle" required placeholder="عنوان هزینه"><input id="expenseAmount" required type="number" min="0" placeholder="مبلغ به تومان"><select id="expenseCategory"><option>خوراک</option><option>کتاب و آموزش</option><option>رفت‌وآمد</option><option>تفریح</option><option>خرید</option><option>سایر</option></select><button class="btn">＋ ثبت هزینه</button></div></form></div>
+  <div class="sheet"><h3>جمع هزینه‌ها</h3><div style="font-size:25px;font-weight:800" id="expenseTotal">۰ تومان</div><div id="expenses" class="entries"></div></div>
+</section>
+<section class="section-view" id="view-settings">
+  <div class="section-head"><button class="back" data-home>→</button><div><h2>تنظیمات و پشتیبان</h2><p>اطلاعاتت را در یک فایل نگه دار.</p></div></div>
+  <div class="sheet"><p>اطلاعات در حافظه‌ی مرورگر همین دستگاه ذخیره می‌شود. برای نگه‌داشتن یا انتقال اطلاعات، نسخه پشتیبان بگیر.</p><button class="btn" id="exportBtn">دریافت نسخه پشتیبان</button> <label class="btn secondary" for="importFile">بازیابی پشتیبان</label><input id="importFile" type="file" accept="application/json" hidden><hr style="border:0;border-top:1px solid #eee0d8;margin:18px 0"><button class="btn danger" id="clearBtn">پاک کردن همه اطلاعات</button></div>
+</section>
+<footer class="footer">Made with little dreams ✧ Parvaz Daily</footer>
+<script>
+const $=id=>document.getElementById(id), today=()=>new Date().toISOString().slice(0,10);
+const empty={tasks:[],moods:{},events:[],studies:[],tips:[],plants:[],books:[],reviews:[],foods:[],exercises:[],expenses:[]};
+let db;try{db={...empty,...JSON.parse(localStorage.getItem('parvaz-fantasy-v1')||'{}')}}catch(e){db={...empty}}let selectedMood='';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fa=n=>Number(n||0).toLocaleString('fa-IR');
+$('todayDate').textContent=new Date().toLocaleDateString('fa-IR',{weekday:'long',month:'long',day:'numeric'});
+function persist(){localStorage.setItem('parvaz-fantasy-v1',JSON.stringify(db));render()}
+function show(id){$('homeView').style.display='none';document.querySelectorAll('.section-view').forEach(v=>v.classList.remove('active'));$('view-'+id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function home(){$('homeView').style.display='block';document.querySelectorAll('.section-view').forEach(v=>v.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.open)));
+document.querySelectorAll('[data-home]').forEach(b=>b.addEventListener('click',home));
+$('backupBtn').onclick=()=>show('settings');
+function delButton(key,i){return `<button class="btn danger" data-del="${key}" data-i="${i}">حذف</button>`}
+function list(id,arr,key,renderer){const el=$(id);el.innerHTML=arr.length?arr.map((x,i)=>renderer(x,i)).join(''):'<div class="empty">هنوز چیزی ثبت نشده ✧</div>';el.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{db[b.dataset.del].splice(+b.dataset.i,1);persist()})}
+function row(x,subtitle,key,i,done=false){return `<div class="entry">${key==='tasks'?`<input type="checkbox" data-task="${i}" ${done?'checked':''}>`:''}<div class="entry-main"><strong>${esc(x.title||x.name||x.text)}</strong>${subtitle?`<small>${esc(subtitle)}</small>`:''}${x.body?`<div>${esc(x.body)}</div>`:''}${x.note?`<div>${esc(x.note)}</div>`:''}</div><div class="entry-actions">${key==='studies'?`<button class="btn secondary" data-study="${i}">${x.done?'برگشت':'انجام شد'}</button>`:''}${key==='books'?`<button class="btn secondary" data-bookstatus="${i}">تغییر وضعیت</button>`:''}${delButton(key,i)}</div></div>`}
+function render(){
+ const t=db.tasks.filter(x=>x.date===today()),done=t.filter(x=>x.done).length,percent=t.length?Math.round(done/t.length*100):0;
+ $('taskProgress').textContent=`${fa(done)} از ${fa(t.length)} کار انجام شده`;$('taskPercent').textContent=fa(percent)+'٪';$('taskBar').style.width=percent+'%';
+ list('tasks',t,'tasks',(x)=>row({title:x.text},x.time||'امروز','tasks',db.tasks.indexOf(x),x.done));
+ document.querySelectorAll('[data-task]').forEach(c=>c.onchange=()=>{db.tasks[+c.dataset.task].done=c.checked;persist()});
+ const m=db.moods[today()]||{};$('moodNote').value=m.note||'';selectedMood=m.mood||'';document.querySelectorAll('[data-mood]').forEach(b=>b.classList.toggle('selected',b.dataset.mood===selectedMood));
+ list('events',db.events,'events',(x,i)=>row(x,x.date,'events',i));
+ list('studies',db.studies,'studies',(x,i)=>row(x,`${fa(x.minutes)} دقیقه · ${x.done?'تمام‌شده':'در برنامه'}${x.note?' · '+x.note:''}`,'studies',i));
+ list('tips',db.tips,'tips',(x,i)=>row(x,x.category,'tips',i));
+ list('plants',db.plants,'plants',(x,i)=>row({title:'🪴 '+x.name,note:x.note},`آبیاری بعدی: ${x.water||'ثبت نشده'} · آخرین آبیاری: ${x.last||'ثبت نشده'}${x.light?' · نور: '+x.light:''}`,'plants',i));
+ list('books',db.books,'books',(x,i)=>`<div class="book-entry"><strong>📖 ${esc(x.title)}</strong><small>${esc(x.author||'نویسنده نامشخص')} · ${esc(x.status)}</small><div class="entry-actions" style="margin-top:8px"><button class="btn secondary" data-bookstatus="${i}">تغییر وضعیت</button>${delButton('books',i)}</div></div>`);
+ list('reviews',db.reviews,'reviews',(x,i)=>row(x,'نقد کتاب','reviews',i));
+ list('foods',db.foods,'foods',(x,i)=>row(x,x.type+' · امروز','foods',i));
+ list('exercises',db.exercises,'exercises',(x,i)=>row(x,`${fa(x.minutes||0)} دقیقه · امروز`,'exercises',i));
+ list('expenses',db.expenses,'expenses',(x,i)=>row(x,`${fa(x.amount)} تومان · ${x.category}`,'expenses',i));
+ $('expenseTotal').textContent=fa(db.expenses.reduce((s,x)=>s+Number(x.amount||0),0))+' تومان';
+ $('summary').innerHTML=`<span>🌸 ${fa(t.length)} کار امروز</span><span>📚 ${fa(db.books.length)} کتاب</span><span>🪴 ${fa(db.plants.length)} گیاه</span><span>✧ ${fa(db.events.filter(x=>x.date===today()).length)} خاطره</span>`;
+ document.querySelectorAll('[data-study]').forEach(b=>b.onclick=()=>{db.studies[+b.dataset.study].done=!db.studies[+b.dataset.study].done;persist()});
+ document.querySelectorAll('[data-bookstatus]').forEach(b=>b.onclick=()=>{let x=db.books[+b.dataset.bookstatus],states=['می‌خواهم بخوانم','در حال خواندن','خوانده‌ام'];x.status=states[(states.indexOf(x.status)+1)%states.length];persist()});
+}
+function bind(formId,fn){$(formId).addEventListener('submit',e=>{e.preventDefault();fn();e.target.reset();persist()})}
+bind('taskForm',()=>db.tasks.unshift({text:$('taskText').value,time:$('taskTime').value,date:today(),done:false}));
+document.querySelectorAll('[data-mood]').forEach(b=>b.onclick=()=>{selectedMood=b.dataset.mood;document.querySelectorAll('[data-mood]').forEach(x=>x.classList.toggle('selected',x===b))});
+$('moodForm').onsubmit=e=>{e.preventDefault();db.moods[today()]={mood:selectedMood,note:$('moodNote').value};persist()};
+bind('eventForm',()=>db.events.unshift({title:$('eventTitle').value,body:$('eventBody').value,date:new Date().toLocaleDateString('fa-IR')}));
+bind('studyForm',()=>db.studies.unshift({title:$('studyTitle').value,minutes:$('studyMinutes').value,note:$('studyNote').value,done:false}));
+bind('tipForm',()=>db.tips.unshift({title:$('tipTitle').value,category:$('tipCategory').value,body:$('tipBody').value}));
+bind('plantForm',()=>db.plants.unshift({name:$('plantName').value,water:$('plantWater').value,last:$('plantLast').value,light:$('plantLight').value,note:$('plantNote').value}));
+bind('bookForm',()=>db.books.unshift({title:$('bookTitle').value,author:$('bookAuthor').value,status:$('bookStatus').value}));
+bind('reviewForm',()=>db.reviews.unshift({title:$('reviewTitle').value,body:$('reviewBody').value}));
+bind('foodForm',()=>db.foods.unshift({name:$('foodName').value,type:$('foodType').value}));
+bind('exerciseForm',()=>db.exercises.unshift({name:$('exerciseName').value,minutes:$('exerciseMinutes').value}));
+bind('expenseForm',()=>db.expenses.unshift({title:$('expenseTitle').value,amount:$('expenseAmount').value,category:$('expenseCategory').value}));
+function exportBackup(){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:'application/json'}));a.href=url;a.download='parvaz-daily-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('exportBtn').onclick=exportBackup;$('backupBtn').onclick=()=>show('settings');
+$('importFile').onchange=async e=>{try{const obj=JSON.parse(await e.target.files[0].text());if(confirm('اطلاعات فعلی با نسخه پشتیبان جایگزین شود؟')){db={...empty,...obj};persist()}}catch(err){alert('این فایل پشتیبان معتبر نیست.')}e.target.value=''};
+$('clearBtn').onclick=()=>{if(confirm('همه اطلاعات پاک شود؟ این کار قابل برگشت نیست.')){db={...empty};persist()}};
+$('musicBtn').onclick=()=>alert('در این نسخه فقط دکمه‌ی تزئینی است؛ صدای پس‌زمینه فعال نشده تا بدون اجازه‌ی تو صدا پخش نشود.');
+render();
+</script>
+</body>
+</html>
